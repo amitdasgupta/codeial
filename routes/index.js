@@ -13,6 +13,7 @@ router.use('/users',require('./users'));
 // for any further route to be accesed from here
 // router.use('/routerName',require('./routerFile'))
 
+router.use('/friends',require('./friends'));
 
 
 module.exports=router;
