@@ -15,5 +15,6 @@ router.use('/users',require('./users'));
 
 router.use('/friends',require('./friends'));
 
+router.use('/posts',require('./posts'));
 
 module.exports=router;
