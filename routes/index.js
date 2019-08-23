@@ -10,6 +10,7 @@ router.get('/',homeController.home);
 
 router.use('/users',require('./users'));
 
+
 // for any further route to be accesed from here
 // router.use('/routerName',require('./routerFile'))
 

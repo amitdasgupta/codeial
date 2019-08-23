@@ -4,8 +4,16 @@ const app=express();
 const expressLayouts=require('express-ejs-layouts');
 
 
+// to link assets folder
+app.use(express.static('./assets'));
+
 // this is putted here so that routes can know layout they are going to use
 app.use(expressLayouts);
+// this is done to move all styles and script at the top(extract style and script from sub pages into layout)
+app.set('layout extractStyles',true);
+app.set('layout extractScripts',true);
+
+
 
 // use express router
 app.use('/',require('./routes'));
