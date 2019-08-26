@@ -1,6 +1,5 @@
 const User=require('../model/users');
 
-
 module.exports.profile=function(req,res){
     return res.render('user_profile',{
         title:'Profile'
@@ -45,4 +44,5 @@ module.exports.create=function(req,res){
 // sign in and create the seesion for the user
 module.exports.createSession=function(req,res){
     //todo :create session
+    return res.redirect('/');
 }
