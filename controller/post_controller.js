@@ -1,7 +1,18 @@
-module.exports.posts=function(req,res){
-    return res.end('<h1>My all posts</h1>');
+const Post=require('../model/post');
+module.exports.create=function(req,res){
+    if(req.isAuthenticated())
+    {
+        Post.create({
+          content:req.body.content,
+          user:req.user._id
+        },function(err,post){
+            if(err)
+            {
+                console.log(`error in creating post:${err}`);
+                return;
+            }
+        });
+    }
+    return res.redirect('back');
 }
 
-module.exports.edit=function(req,res){
-    return res.end('<h1>Edit post </h1>')
-}
