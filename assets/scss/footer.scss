@@ -1,0 +1,20 @@
+footer{
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    font-size: 1.4rem;
+    background-color: #03A9F4;
+    color: white;
+    div{
+        display: flex;
+        div{
+            padding: 0 10px;
+            a{
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+}

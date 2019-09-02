@@ -1,2 +1,7 @@
 body {
-  margin: 0; }
+  margin: 0;
+  font-family: sans-serif; }
+  body #layout-main {
+    height: 100%; }
+  body a:hover {
+    color: #9e3257; }

@@ -1,0 +1,16 @@
+footer {
+  height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 10px;
+  font-size: 1.4rem;
+  background-color: #03A9F4;
+  color: white; }
+  footer div {
+    display: flex; }
+    footer div div {
+      padding: 0 10px; }
+      footer div div a {
+        color: white;
+        text-decoration: none; }
