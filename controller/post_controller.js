@@ -1,4 +1,7 @@
 const Post=require('../model/post');
+
+
+
 module.exports.create=function(req,res){
         Post.create({
           content:req.body.content,
@@ -12,4 +15,5 @@ module.exports.create=function(req,res){
             return res.redirect('back');
         });
 }
+
 

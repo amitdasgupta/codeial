@@ -18,4 +18,6 @@ router.use('/friends',require('./friends'));
 
 router.use('/posts',require('./posts'));
 
+router.use('/comments',require('./comments'));
+
 module.exports=router;
