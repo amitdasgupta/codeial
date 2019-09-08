@@ -14,8 +14,16 @@ module.exports.home=function(req,res){
     //     });
     // })
     
-    // code to populate user attribute with user data from database
-    Post.find({}).populate('user').exec(function(err,post){
+    // code to populate user and comments of each post also comments user is also poulated here
+    Post.find({})
+    .populate('user')
+    .populate({
+        path: 'comments',
+        populate: {
+            path: 'user'
+        }
+    })
+    .exec(function(err,post){
         if(err)
         console.log(`error in getting posts:${err}`);
         return res.render('home',{
