@@ -1,0 +1,18 @@
+<ul id="post-comments-<%= post._id%>">
+    <% for(comment of post.comments){%>
+         <li>
+            <p>
+                <% if(locals.user && (locals.user.id==comment.user.id||post.user.id==locals.user.id)){%>
+                    <small>
+                        <a href="/comments/destroy/<%= comment._id%>">X</a>
+                    </small>
+                <% }%>
+                <%= comment.content%>
+                <br>
+                <small>
+                    <%= comment.user.email%>
+                </small>
+            </p>
+         </li>
+    <% }%>
+</ul>
