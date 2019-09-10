@@ -1,4 +1,5 @@
 const Post=require('../model/post');
+const User=require('../model/users');
 
 module.exports.home=function(req,res){
     // console.log(req.cookies);
@@ -25,10 +26,20 @@ module.exports.home=function(req,res){
     })
     .exec(function(err,post){
         if(err)
-        console.log(`error in getting posts:${err}`);
-        return res.render('home',{
-            title:'Codeial | Home',
-            posts:post
+        {
+            console.log(`error in getting posts:${err}`);
+            return;
+        }
+           User.find({},function(err,user){
+              if(err){
+                console.log(`error in getting users:${err}`);
+                return;
+              }   
+            return res.render('home',{
+                title:'Codeial | Home',
+                posts:post,
+                all_users:user
+           });
         });
     });
     
