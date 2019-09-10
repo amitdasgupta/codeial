@@ -25,8 +25,9 @@ module.exports.create=function(req,res){
 }
 
 module.exports.destroy=function(req,res){
-    Comment.findById(req.params.id,function(err,comment){
-        if(comment.user==req.user.id){
+    Comment.findById(req.params.id).populate('post').exec(function(err,comment){
+        console.log('**********',comment.post.user,'**********');
+        if(comment.user==req.user.id||req.user.id==comment.post.user){
            let postId=comment.post;
            comment.remove();
         //    find post and then pull out that comment id from comments
