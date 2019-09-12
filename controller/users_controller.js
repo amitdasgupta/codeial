@@ -1,5 +1,7 @@
 const User=require('../model/users');
 
+// no async change is maded here
+
 module.exports.profile=function(req,res){
     User.findById(req.params.id,function(err,user){
         return res.render('user_profile',{
