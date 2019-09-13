@@ -1,4 +1,10 @@
 {
+    let loadPage=function(){
+        let postLinks=$('a.delete-post-button');
+        postLinks.each(function(link){
+           deletePost($(this)); 
+        });
+    }
     // method to submit new data using ajax
     let createPost=function(){
         let newPostForm=$('#new-post-form');
@@ -13,6 +19,8 @@
                 console.log(data);
                 let newPost=newPostDom(data.data.post);
                 $("#posts-list-container>ul").prepend(newPost);
+                // delete first element inside of other element
+                deletePost($('.delete-post-button',newPost));
             },
             error:function(err){
                 console.log(err.responseText);
@@ -34,7 +42,6 @@
               ${post.user.name}
           </small>
         </p>
-        </li>
         <div class="post-comments">
         <form action="/comments/create" method="post">
             <input type="text" name="content" placeholder="Type here to add comment...">
@@ -42,7 +49,27 @@
             <input type="submit" value="Add Comment">
         </form>
         </div>
+        </li>
      `);
     }
+
+    // method to delete a post from dom
+    let deletePost=function(deleteLink){
+        $(deleteLink).click(function (e) { 
+            e.preventDefault();
+            $.ajax({
+                type: "get",
+                url: $(deleteLink).prop('href'),
+                success: function (data) {
+                    console.log(data);
+                    $(`#post-${data.data.post_id}`).remove();
+                },
+                error: function(err){
+                    console.log(err.responseText);
+                }
+            });
+        });
+    }
     createPost();
+    loadPage();
 }
