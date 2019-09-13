@@ -10,7 +10,6 @@
         let newPostForm=$('#new-post-form');
         newPostForm.submit(function(e){
         e.preventDefault();
-
         $.ajax({
             type: "post",
             url: "/posts/create",
@@ -69,6 +68,11 @@
                 }
             });
         });
+    }
+
+    // comments section*******************************************
+    let createComment=function(){
+
     }
     createPost();
     loadPage();
