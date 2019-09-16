@@ -19,7 +19,6 @@ module.exports.create=async function(req,res){
                 message: "Comment created"
             });
         }
-        req.flash('success','Comment added!'); 
         return res.redirect('back');
     }
     catch(err){
@@ -44,7 +43,6 @@ module.exports.destroy=async function(req,res){
                     message: "Comment deleted"
                 });
             }
-            req.flash('success','Comment removed!');
             return res.redirect('back');
         }
         else{

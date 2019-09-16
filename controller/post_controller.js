@@ -16,7 +16,6 @@ module.exports.create=async function(req,res){
               message: "Post created!"
             });
           }
-          req.flash('success','Post published!'); 
           return res.redirect('back');
         }
         catch(err){
@@ -41,7 +40,7 @@ module.exports.destroy=async function(req,res){
                 message: "Post deleted"
                 });
               }
-              req.flash('success','Post and associated comments removed!'); 
+              
               return res.redirect('back');
               }
               else{

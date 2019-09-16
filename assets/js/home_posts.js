@@ -19,6 +19,12 @@
             url: "/posts/create",
             data: newPostForm.serialize(),
             success: function (data) {
+                new Noty({
+                    type: 'success',
+                    layout: 'topRight',
+                    text: 'Post added!',
+                    timeout: 1000
+                }).show();
                 console.log(data);
                 $(':input',newPostForm).not(':submit').val('');
                 let newPost=newPostDom(data.data.post);
@@ -53,6 +59,11 @@
             <input type="hidden" name="post" value="${post._id}">
             <input type="submit" value="Add Comment">
         </form>
+        <div class="post-comments-list">
+            <ul id="post-comments-${post._id}">
+           
+            </ul>
+        </div>
         </div>
         </li>
      `);
@@ -66,6 +77,12 @@
                 type: "get",
                 url: $(deleteLink).prop('href'),
                 success: function (data) {
+                    new Noty({
+                        type: 'info',
+                        layout: 'topRight',
+                        text: 'Post removed!',
+                        timeout: 1000
+                    }).show();
                     console.log(data);
                     $(`#post-${data.data.post_id}`).remove();
                 },
@@ -78,7 +95,6 @@
 
     // comments section*******************************************
     let createComment=function(commentForm){
-        console.log(commentForm);
     commentForm.submit(function (e) { 
         e.preventDefault();
         $.ajax({
@@ -86,6 +102,14 @@
             url: '/comments/create',
             data: commentForm.serialize(),
             success: function (response) {
+
+                new Noty({
+                    type: 'success',
+                    layout: 'topRight',
+                    text: 'Comment created!',
+                    timeout: 1000
+                }).show();
+
                 console.log(response);
                 let comment=$(`
                 <li>
@@ -123,6 +147,12 @@
                 type: "get",
                 url: $(deleteLink).prop('href'),
                 success: function (response) {
+                    new Noty({
+                        type: 'info',
+                        layout: 'topRight',
+                        text: 'Comment removed!',
+                        timeout: 1000
+                    }).show();
                     console.log(response);
                     $(deleteLink).closest('li').remove();
                 }
