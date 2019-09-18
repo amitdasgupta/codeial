@@ -11,13 +11,39 @@ module.exports.profile=function(req,res){
     });
 }
 
-module.exports.update=function(req,res){
+module.exports.update=async function(req,res){
+    // if(req.params.id==req.user.id){
+    //     User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+    //         return res.redirect('back');
+    //     });
+    // }else{
+    //     return res.status(401).send('Unauthorized'); 
+    // }
     if(req.params.id==req.user.id){
-        User.findByIdAndUpdate(req.params.id,req.body,function(err,user){
+       try{
+           let user=await User.findById(req.params.id);
+           User.uploadedAvatar(req,res,function(err){
+               if(err){
+                   console.log('**************Multer err:',err);
+               }
+               console.log(req.file);
+               user.name=req.body.name;
+               user.email=req.body.email;
+               if(req.file){
+                //    this is saving the path of the uploaded file into the avatar field of the user 
+                   user.avatar=User.avatarPath+'/'+req.file.filename;
+               }
+               user.save();
+               return res.redirect('back');
+           });
+       }
+       catch(err){
+            req.flash('error',err);
             return res.redirect('back');
-        });
+       }
     }else{
-        return res.status(401).send('Unauthorized'); 
+        req.flash('error','Unauthorized!');
+        return res.status(401).send('Unauthorized');
     }
 }
 
