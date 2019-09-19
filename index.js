@@ -30,6 +30,9 @@ app.use(cookieParser());
 // to link assets folder
 app.use(express.static('./assets'));
 
+// make the upload path available to the browser
+app.use('/uploads',express.static(__dirname+'/uploads'));
+
 // this is putted here so that routes can know layout they are going to use
 app.use(expressLayouts);
 // this is done to move all styles and script at the top(extract style and script from sub pages into layout)
