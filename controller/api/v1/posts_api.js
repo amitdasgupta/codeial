@@ -30,7 +30,7 @@ module.exports.destroy=async function(req,res){
           
           return res.json(200,{
               message: "Post and associated comment deleted successfully"
-          })
+          });
     }
           catch(err){
           console.log(err);

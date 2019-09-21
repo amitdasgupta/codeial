@@ -8,6 +8,7 @@ const db=require('./config/mongoose');
 const session=require('express-session');
 const passport=require('passport');
 const passportLocal=require('./config/passport-local-strategy');
+const passportJWT=require('./config/passport-jwt-strategy');
 const mongoStore=require('connect-mongo')(session);
 const sassMiddleware=require('node-sass-middleware');
 const flash=require('connect-flash');
@@ -43,7 +44,7 @@ app.set('layout extractScripts',true);
 app.set('view engine','ejs');
 app.set('views','./view');
 
-// this code is part of passportjs and express-sessio
+// this code is part of passportjs and express-session
 app.use(session({
     name:'codeial',
     //TODO : change secret key before deployment in production mode
