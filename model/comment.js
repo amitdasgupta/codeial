@@ -1,23 +1,32 @@
-const mongoose=require('mongoose');
+const mongoose = require("mongoose");
 
-const commentSchema=new mongoose.Schema({
+const commentSchema = new mongoose.Schema(
+  {
     content: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     // include the user who commented
-    user:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
     },
     // include the post on which comment made
-    post:{
+    post: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Post"
+    },
+    likes: [
+      {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Post'
-    }
-},{
+        ref: "Like"
+      }
+    ]
+  },
+  {
     timestamps: true
-});
+  }
+);
 
-const Comment=mongoose.model('Comment',commentSchema);
-module.exports=Comment;
+const Comment = mongoose.model("Comment", commentSchema);
+module.exports = Comment;
