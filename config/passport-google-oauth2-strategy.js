@@ -7,9 +7,9 @@ passport.use(
   new googleStrategy(
     {
       //Fill these fields when using
-      clientID: "",
-      clientSecret: "",
-      callbackURL: ""
+      clientID: "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDd",
+      clientSecret: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFF",
+      callbackURL: "FFFFFFFFFFFFFFFFFFFFFFFFFFFFF"
     },
     function(accessToken, refreshToken, profile, done) {
       // find user

@@ -1,15 +1,22 @@
 <li>
-<p>
-    <% if(locals.user && (locals.user.id==comment.user.id||post.user.id==locals.user.id)){%>
-        <small>
-            <a href="/comments/destroy/<%= comment._id%>">X</a>
-        </small>
-    <% }%>
-    <%= comment.content%>
-    <br>
+  <p>
+    <% if(locals.user &&
+    (locals.user.id==comment.user.id||post.user.id==locals.user.id)){%>
     <small>
-        <%= comment.user.email%>
+      <a href="/comments/destroy/<%= comment._id%>" class="delete-comment-button">X</a>
     </small>
-</p>
+    <% }%> <%= comment.content%>
+    <br />
+    <small>
+      <%= comment.user.name%>
+    </small>
+    <!-- CHANGE::display the likes of the comment , if the user is logged in give like link -->
+    <small>
+      <% if(locals.user){ %>
+      <a href="/likes/toggle/?id=<%=comment._id%>&type=Comment" class="toggle-likes"><%=comment.likes.length%> Likes<a>
+      <% }else{ %>
+        <%=comment.likes.length%> Likes
+      <% } %>
+    </small>
+  </p>
 </li>
-    

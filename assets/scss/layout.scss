@@ -1,10 +1,15 @@
-body{
-    margin: 0;
-    font-family: sans-serif;
-    #layout-main{
-        height: 100%;
-    }
-    a:hover{
-        color:#9e3257;;
-    }
+* {
+  a {
+    text-decoration: none;
+  }
+}
+body {
+  margin: 0;
+  font-family: sans-serif;
+  #layout-main {
+    height: 100%;
+  }
+  a:hover {
+    color: #9e3257;
+  }
 }

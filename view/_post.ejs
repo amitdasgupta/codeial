@@ -1,32 +1,41 @@
 <li id="post-<%= post._id%>">
-    <p>
-      <% if(locals.user && locals.user.id==post.user.id){%>
-      <small>
-          <a class="delete-post-button" href="/posts/destroy/<%= post._id%>">X</a>
-      </small>
-      <% }%>
-      <%= post.content %>
-      <br>
-      <small>
-          <%= post.user.name%>
-      </small>
-    </p>
-<div class="post-comments">
-<% if(locals.user){%>
-  <form action="/comments/create" method="post" class="new-comment-form">
-      <input type="text" name="content" placeholder="Type here to add comment...">
-      <input type="hidden" name="post" value="<%= post._id%>">
-      <input type="submit" value="Add Comment">
-  </form>
-<% } %>
+  <p>
+    <% if(locals.user && locals.user.id==post.user.id){%>
+    <small>
+      <a class="delete-post-button" href="/posts/destroy/<%= post._id%>">X</a>
+    </small>
+    <% }%> <%= post.content %>
+    <br />
+    <small>
+      <%= post.user.name%>
+    </small>
+    <br />
+    <small>
+      <!-- CHANGE::display the likes of the post , if the user is logged in give like link -->
+      <% if(locals.user){ %>
+      <a href="/likes/toggle/?id=<%=post._id%>&type=Post" class="toggle-likes"
+        ><%= post.likes.length%> Like</a
+      >
+      <% }else{ %> <%= post.likes.length%> Like <% } %>
+    </small>
+  </p>
+  <div class="post-comments">
+    <% if(locals.user){%>
+    <form action="/comments/create" method="post" class="new-comment-form">
+      <input
+        type="text"
+        name="content"
+        placeholder="Type here to add comment..."
+      />
+      <input type="hidden" name="post" value="<%= post._id%>" />
+      <input type="submit" value="Add Comment" />
+    </form>
+    <% } %>
 
-<div class="post-comments-list">
-    <ul id="post-comments-<%= post._id%>">
-    <% for(comment of post.comments){%>
-       <%- include('_comment') -%>
-    <% }%>
-    </ul>
-</div>
-
-</div>
+    <div class="post-comments-list">
+      <ul id="post-comments-<%= post._id%>">
+        <% for(comment of post.comments){%> <%- include('_comment') -%> <% }%>
+      </ul>
+    </div>
+  </div>
 </li>
