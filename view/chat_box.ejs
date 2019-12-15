@@ -1,0 +1,18 @@
+<link rel="stylesheet" href="/css/chat_box.css" />
+<% if(locals.user){ %>
+<div class="chat-box">
+  <div class="messages">
+    <div class="message other-message">
+      Other message
+    </div>
+    <div class="message self-message">
+      Self message
+    </div>
+  </div>
+
+  <form>
+    <input type="text" name="message" placeholder="type your message here" />
+    <input type="button" value="Send" />
+  </form>
+</div>
+<% } %>

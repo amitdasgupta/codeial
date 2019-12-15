@@ -1,2 +1,4 @@
 body {
   background-color: greenyellow; }
+  body button.friend-request {
+    margin-bottom: 10px; }

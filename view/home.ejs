@@ -28,8 +28,8 @@
     </p>
     <% } %>
   </section>
+  <%- include('chat_box') %>
 </div>
-
 <script src="/js/home_posts.js"></script>
 
 <!-- CHANGE::change here for likes -->
@@ -41,3 +41,10 @@
     let toggle = new ToggleLike(self);
   });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+<script src="/js/chat_engine.js"></script>
+<% if(locals.user){ %>
+<script>
+  new ChatEngine("chat-box", "<%= locals.user.email%>");
+</script>
+<% } %>

@@ -1,22 +1,39 @@
-<link rel="stylesheet" type="" href="/css/users_profile.css">
+<link rel="stylesheet" type="" href="/css/users_profile.css" />
 
-<img src="<%= user.avatar%>" alt="<%= user.name%>" width="100" id="profile-pic">
+<img
+  src="<%= user.avatar%>"
+  alt="<%= user.name%>"
+  width="100"
+  id="profile-pic"
+/>
 <p><%= profile_user.name%></p>
 <p><%= profile_user.email%></p>
-
+<button class="friend-request">Add friend</button>
 <% if(user.id==profile_user.id){ %>
-   <!-- if user matches than show form -->
-   <form action="/users/update/<%= user.id %>" method="post" enctype="multipart/form-data" id="updation-form">
-        <input type="text" name="name" placeholder="Your Name" value="<%= profile_user.name%>" required>
-        <input type="email" name="email" placeholder="Your Email" value="<%= profile_user.email%>" required>
+<!-- if user matches than show form -->
+<form
+  action="/users/update/<%= user.id %>"
+  method="post"
+  enctype="multipart/form-data"
+  id="updation-form"
+>
+  <input
+    type="text"
+    name="name"
+    placeholder="Your Name"
+    value="<%= profile_user.name%>"
+    required
+  />
+  <input
+    type="email"
+    name="email"
+    placeholder="Your Email"
+    value="<%= profile_user.email%>"
+    required
+  />
 
-        <input type="file" name="avatar" placeholder="Profile Picture">
-        <input type="submit" value="Update">
-   </form>
-   <script src="/js/user_profile.js"></script>
-<% }else{ %>
-
-
-<% } %>
-
-        
+  <input type="file" name="avatar" placeholder="Profile Picture" />
+  <input type="submit" value="Update" />
+</form>
+<script src="/js/user_profile.js"></script>
+<% }else{ %> <% } %>

@@ -1,0 +1,34 @@
+.chat-box {
+  border: 2px dotted grey;
+  position: fixed;
+  bottom: 5px;
+  right: 5px;
+  height: 300px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  form {
+    margin-bottom: 2px;
+    input[type="text"] {
+      width: 80%;
+    }
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .messages {
+    padding: 20px 5px;
+    .message {
+      width: 170px;
+      height: 25px;
+      padding: 5px;
+      margin-bottom: 5px;
+      background-color: #6aacc3;
+    }
+    .self-message {
+      margin-left: 60px;
+      background-color: #d5ebf3;
+    }
+  }
+}
